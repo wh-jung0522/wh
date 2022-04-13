@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leaddev.whstudy.mapper.UserMapper">
+
+    <!-- 매칭 -->
+    <select id="matchUser" resultType="boolean">
+        SELECT
+            IF(COUNT(UserName) = 1,1,0)
+        FROM user
+        WHERE
+            UserID = #(userID)
+        AND
+            HashedUserPW = #(hashedUserPW)
+    </select>
+    <!--  생성  -->
+    <insert id="createUser">
+        INSERT INTO USER
+            (UserId, HashedUserPW, UserName)
+        Values
+            (#{userID}, #{hashedUserPW}, #{userName})
+    </insert>
+    <!--  수정  -->
+
+    <!--  삭제  -->
+
+</mapper>
