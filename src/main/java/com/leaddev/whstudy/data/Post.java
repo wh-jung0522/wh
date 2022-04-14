@@ -7,13 +7,13 @@ import java.util.Date;
 
 public class Post {
     @Getter @Setter
-    private int PostNum;
+    private int postNum;
     @Getter @Setter
-    private String UserName;
+    private String userName;
     @Getter @Setter
-    private String PostTitle;
+    private String postTitle;
     @Getter @Setter
-    private Date PostRegTime;
+    private Date postRegTime;
     @Getter @Setter
-    private String PostContent;
+    private String postContent;
 }

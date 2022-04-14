@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leaddev.whstudy.mapper.PostMapper">
+
+    <!--  전체 조회  -->
+    <select id="getPosts" resultType="com.leaddev.whstudy.data.Post">
+        SELECT
+            *
+        FROM
+            post
+    </select>
+
+    <!--  하나만 조회  -->
+    <select id="getPost" resultType="com.leaddev.whstudy.data.Post">
+        SELECT
+            *
+        FROM
+            post
+        WHERE
+            PostNum = #{postNum}
+    </select>
+
+    <insert id="postPost">
+        INSERT INTO post(UserName,PostTitle,PostRegTime,PostContent)
+        VALUES (#{userName}, #{postTitle}, now(), #{postContent})
+    </insert>
+    <update id="updatePost">
+        UPDATE post
+        SET
+        PostTitle = #{postTitle},
+        PostRegTime = now(),
+        PostContent = #{postContent}
+        WHERE
+        PostNum = #{postNum}
+    </update>
+    <delete id="deletePost">
+        DELETE
+        FROM
+        post
+        WHERE
+        PostNum = #{postNum}
+    </delete>
+
+
+
+</mapper>

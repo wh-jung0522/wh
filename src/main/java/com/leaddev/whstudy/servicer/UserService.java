@@ -11,9 +11,15 @@ public class UserService {
     @Autowired
     UserMapper userMapper;
 
-    public boolean matchUser(User user) throws Exception{
-        return userMapper.matchUser(user);
+    //매칭
+    public boolean matchUser(String userID) throws Exception{
+        return userMapper.matchUser(userID);
     }
+    //로그인
+    public boolean loginUser(User user) throws Exception{
+        return userMapper.loginUser(user);
+    }
+
     //생성
     public void createUser(User user) throws Exception{
         userMapper.createUser(user);
@@ -26,6 +32,4 @@ public class UserService {
     public void deleteUser(User user) throws Exception {
         userMapper.deleteUser(user);
     }
-
-
 }

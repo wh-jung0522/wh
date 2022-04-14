@@ -5,24 +5,36 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <mapper namespace="com.leaddev.whstudy.mapper.UserMapper">
 
     <!-- 매칭 -->
-    <select id="matchUser" resultType="boolean">
+    <select id="matchUser" resultType="Boolean">
+        SELECT COUNT(*) = 1 FROM user WHERE UserID = #{userID}
+    </select>
+    <!--  로그인  -->
+    <select id="loginUser" resultType="Boolean">
         SELECT
-            IF(COUNT(UserName) = 1,1,0)
+        IF(COUNT(UserName) = 1,1,0)
         FROM user
         WHERE
-            UserID = #(userID)
-        AND
-            HashedUserPW = #(hashedUserPW)
+        UserID = #{userID} AND HashedUserPW = #{hashedUserPW}
     </select>
+
     <!--  생성  -->
     <insert id="createUser">
-        INSERT INTO USER
-            (UserId, HashedUserPW, UserName)
-        Values
-            (#{userID}, #{hashedUserPW}, #{userName})
+        INSERT INTO user(UserID, HashedUserPW, UserName)
+        VALUES (#{userID}, #{hashedUserPW}, #{userName})
     </insert>
     <!--  수정  -->
-
+    <update id = "modifyUser">
+        UPDATE USER
+        SET
+        HashedUserPW = #{hashedUserPW}
+        ,UserName = #{userName}
+        WHERE
+        UserID = #{userID}
+    </update>
     <!--  삭제  -->
-
+    <delete id="deleteUser">
+        DELETE FROM user
+        WHERE
+        UserID = #{userID}
+    </delete>
 </mapper>
