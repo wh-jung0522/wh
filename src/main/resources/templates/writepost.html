@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    
+</head>
+<body>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th colspan="2">Title</th>
+                <th colspan="2">
+                    <input type="text" id="postTitle" value="제목">
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="2">User</td>
+                <td colspan="2">
+                    <input type="text" id="userName" value="정우현">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">Content</td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <input type="text" id="postContent" value="내용입력">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+        <input type="button" id="request" value="등록"/>
+    </div>
+
+    <!-- <script type="text/javascript" src="static/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="static/js/jquery.twbsPagination.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    $("#request").click(function(){
+        let params = {
+            postTitle: $("#postTitle").val(),
+            userName: $("#userName").val(),
+            postContent: $("#postContent").val()
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/api/post",
+            data: JSON.stringify(params),
+            contentType:"application/json",
+            async:false,
+            success: function(res){
+                console.log("Success")
+            },
+            error:function(e){
+                alert("Fail")
+            }
+        })
+    })
+
+    </script>
+
+</body>
+</html>

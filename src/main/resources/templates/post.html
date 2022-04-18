@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head xmlns:th="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <td>PostNum</td>
+        <td>Title</td>
+        <td>UserName</td>
+        <td>postRegTime</td>
+    </tr>
+
+    <tr th:each="post : ${list}">
+        <td th:text="${post.postNum}"></td>
+        <td th:text="${post.postTitle}"></td>
+        <td th:text="${post.userName}"></td>
+        <td th:text="${post.postRegTime}"></td>
+    </tr>
+
+</table>
+
+</body>
+</html>
